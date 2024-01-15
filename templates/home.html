@@ -7,12 +7,15 @@
     <title>Postal PIN Code Details</title>
     <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
 </head>
+
 <body>
     <div id="container">
         <h1>Postal PIN Code Details</h1>
 
-        <label for="pincode">Enter PIN Code or Branch Name:</label>
-        <input type="text" id="pincode" name="pincode" placeholder="Enter PIN Code or Branch Name">
+        <div class="input-container">
+            <label for="pincode">Enter PIN Code or Branch Name:</label>
+            <input type="text" id="pincode" name="pincode" placeholder="Enter PIN Code or Branch Name">
+        </div>
 
         <button onclick="getDetails()">Get Details</button>
 
