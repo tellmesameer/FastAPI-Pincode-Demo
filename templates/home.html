@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postal PIN Code Details</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/styles.css') }}">
+</head>
+<body>
+    <div id="container">
+        <h1>Postal PIN Code Details</h1>
+
+        <label for="pincode">Enter PIN Code or Branch Name:</label>
+        <input type="text" id="pincode" name="pincode" placeholder="Enter PIN Code or Branch Name">
+
+        <button onclick="getDetails()">Get Details</button>
+
+        <div id="result"></div>
+    </div>
+    <script>
+        function getDetails() {
+            var input = document.getElementById('pincode').value;
+            var isPincode = !isNaN(input);
+            var url;
+    
+            if (isPincode) {
+                url = '/get_details/' + input;
+            } else {
+                url = '/get_details/' + input; 
+            }
+    
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Received data from the server:', data);
+    
+                    var resultDiv = document.getElementById('result');
+    
+                    if (!data || !data.Status || data.Status !== 'Success' || !data.PostOffice || data.PostOffice.length === 0) {
+                        resultDiv.innerHTML = '<p>No valid data received from the server</p>';
+                        return;
+                    }
+    
+                    var postOffices = data.PostOffice;
+    
+                    if (Array.isArray(postOffices) && postOffices.length > 0) {
+                        for (var i = 0; i < postOffices.length; i++) {
+                            var office = postOffices[i];
+                                resultDiv.innerHTML += '<p><strong>Name:</strong> ' + office.Name + '</p>';
+                                resultDiv.innerHTML += '<p><strong>Branch Type:</strong> ' + office.BranchType + '</p>';
+                                resultDiv.innerHTML += '<p><strong>Delivery Status:</strong> ' + office.DeliveryStatus + '</p>';
+                                resultDiv.innerHTML += '<p><strong>Circle:</strong> ' + office.Circle + '</p>';
+                                resultDiv.innerHTML += '<p><strong>District:</strong> ' + office.District + '</p>';
+                                resultDiv.innerHTML += '<p><strong>Division:</strong> ' + office.Division + '</p>';
+                                resultDiv.innerHTML += '<p><strong>Region:</strong> ' + office.Region + '</p>';
+                                resultDiv.innerHTML += '<p><strong>Block:</strong> ' + office.Block + '</p>';
+                                resultDiv.innerHTML += '<p><strong>State:</strong> ' + office.State + '</p>';
+                                resultDiv.innerHTML += '<p><strong>Pincode:</strong> ' + office.Pincode + '</p>';
+                                resultDiv.innerHTML += '<hr>';
+                            }
+                } else {
+                    resultDiv.innerHTML = '<p>No Post Office details found</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                var resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = '<p>Error fetching data. Please try again.</p>';
+            });
+    }
+</script>
+</body>
+
+</html>
