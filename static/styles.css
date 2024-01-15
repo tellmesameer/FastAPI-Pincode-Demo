@@ -5,46 +5,48 @@ body {
     padding: 0;
 }
 
-h1 {
+header {
     text-align: center;
-    color: #007bff; /* Adjusted color */
+    color: #007bff;
+    margin-bottom: 1.25rem; /* 20px in rem units */
 }
 
 #container {
-    max-width: 600px;
-    margin: 20px auto;
+    width: 100%; /* Full width initially */
+    max-width: 50rem; /* 800px in rem units */
+    margin: 2rem auto; /* 20px in rem units */
     background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem; /* 20px in rem units */
+    border-radius: 0.5rem; /* 8px in rem units */
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 
 .input-container {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem; /* 20px in rem units */
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.3125rem; /* 5px in rem units */
     font-weight: bold;
     color: #333;
 }
 
 input {
     width: 100%;
-    padding: 10px;
+    padding: 0.625rem; /* 10px in rem units */
     box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 0.0625rem solid #ccc; /* 1px in rem units */
+    border-radius: 0.25rem; /* 4px in rem units */
 }
 
 button {
     width: 100%;
-    padding: 10px;
+    padding: 0.625rem; /* 10px in rem units */
     background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 0.25rem; /* 4px in rem units */
     cursor: pointer;
 }
 
@@ -53,25 +55,31 @@ button:hover {
 }
 
 #result {
-    margin-top: 20px;
-    border-top: 2px solid #ccc;
-    padding-top: 20px;
+    margin-top: 1.25rem; /* 20px in rem units */
+    border-top: 0.125rem solid #ccc; /* 2px in rem units */
+    padding-top: 1.25rem; /* 20px in rem units */
 }
 
-p {
-    margin-bottom: 10px;
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.625rem; /* 10px in rem units */
 }
 
-hr {
-    border: none;
-    border-top: 1px solid #ccc;
-    margin: 10px 0;
+th, td {
+    border: 0.0625rem solid #ddd; /* 1px in rem units */
+    padding: 0.5rem; /* 8px in rem units */
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
 }
 
 /* Responsive styles */
-@media (max-width: 575px) {
+@media (max-width: 35.9375rem) { /* 575px in rem units */
     #container {
-        max-width: 100%;
-        padding: 15px;
+        width: 100%; /* Full width on small screens */
+        padding: 0.9375rem; /* 15px in rem units */
     }
 }
