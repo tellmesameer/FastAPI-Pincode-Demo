@@ -1,6 +1,7 @@
 # FastAPI Pincode Demo
 
 This is a simple FastAPI project that demonstrates how to use FastAPI to retrieve pincode details using an external API.
+[App is live on Render](https://fast-api-pincode.onrender.com/)
 
 ## Getting Started
 
