@@ -2,3 +2,4 @@
 uvicorn
 requests
 Jinja2
+gunicorn
